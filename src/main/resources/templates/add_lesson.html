@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+  <link th:href="@{/css/lekcje.css}" rel="stylesheet" type="text/css" />
+  <link th:href="@{/css/edycja.css}" rel="stylesheet" type="text/css" />
+  <link th:href="@{/css/edycjalekcji.css}" rel="stylesheet" type="text/css" />
+  <title>Dodawanie lekcji</title>
+</head>
+<body>
+<div class="menu_bar">
+  <h1 class="logo"><a href="/">Matematyka na 100%</a></h1>
+  <ul>
+    <li><a href="/add_exercise">Dodaj zadanie</a></li>
+    <li>
+      <a href="#">Kursy Maturalne <i class="fas fa-caret-down"></i></a>
+
+      <div class="dropdown__menu">
+        <ul>
+          <li><a href="/indywidualne">Zajęcia Indywidualne</a></li>
+          <li><a href="#">Nagrania</a></li>
+          <li><a>Poziomy<i class="fas fa-caret-right"></i></a>
+            <div class="dropdown__menu-1">
+              <ul>
+                <li><a href="/matpodst">Matematyka podstawowa</a></li>
+                <li><a href="#">Matematyka rozszerzona</a></li>
+                <li><a href="#">Fizyka rozszerzona</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+
+<div class="editLesson">
+  <form id="lessonForm" th:action="@{'/add_lesson'}" method="post" th:object="${lessonDto}">
+    <input type="hidden" th:field="${lessonDto.lessonId}">
+    <div class="lesson_data">
+      <p>Numer lekcji:</p><p><input class="lesson_number" type="number"  th:field="${lessonDto.lessonNumber}" /></p>
+    </div>
+    <div class="lesson_data">
+      <p>Kategoria lekcji:</p><p><input class="lesson_topic" type="text"  th:field="${lessonDto.lessonTopic}" /></p>
+    </div>
+    <div class="lesson_data">
+      <p>Temat lekcji:</p><p><input class="lesson_text" type="text"  th:field="${lessonDto.lessonText}" /></p>
+    </div>
+    <div class="lesson_data">
+      <p>Poziom zadania:</p><p><input class="lesson_level" type="text"  th:field="${lessonDto.lessonLevel}" /></p>
+    </div>
+    <div class="button_apply">
+      <input type="submit" value="Zapisz"/>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

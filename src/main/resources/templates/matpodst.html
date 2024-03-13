@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+  <link th:href="@{/css/lekcje.css}" rel="stylesheet" type="text/css" />
+
+  <title>Matematyka podstawowa</title>
+</head>
+<body >
+<div class="menu_bar">
+  <h1 class="logo"><a href="/">Matematyka na 100%</a></h1>
+  <ul>
+    <li sec:authorize="hasAuthority('ADMIN')"><a  href="/add_exercise">Dodaj zadanie</a></li>
+    <li sec:authorize="hasAuthority('ADMIN')"><a  href="/add_lesson">Dodaj lekcje</a></li>
+    <li sec:authorize="hasAuthority('ADMIN')"><a  href="/exercises">Zadania</a></li>
+    <li>
+      <a href="#">Kursy Maturalne <i class="fas fa-caret-down"></i></a>
+
+      <div class="dropdown__menu">
+        <ul>
+          <li><a href="/indywidualne">Zajęcia Indywidualne</a></li>
+          <li><a href="#">Nagrania</a></li>
+          <li><a>Poziomy<i class="fas fa-caret-right"></i></a>
+            <div class="dropdown__menu-1">
+              <ul>
+                <li><a href="/matpodst">Matematyka podstawowa</a></li>
+                <li><a href="#">Matematyka rozszerzona</a></li>
+                <li><a href="#">Fizyka rozszerzona</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <li sec:authorize="!isAuthenticated()"><a  th:href="@{/login}">Logowanie</a></li>
+    <li sec:authorize="!isAuthenticated()"><a  th:href="@{/register}">Rejestracja</a></li>
+    <li sec:authorize="isAuthenticated()"><a th:href="@{/log_out}">Wyloguj</a></li>
+
+  </ul>
+</div>
+
+<div sec:authorize="hasAuthority('ADMIN')" class="lessons">
+  <h1 class="lessons_header">Zakres lekcji z poziomu podstawowego</h1>
+  <div class="lessons_left">
+    <div th:each="lesson: ${lessons}">
+      <div class="lesson_content" th:if="${lesson.lessonNumber < (size/2 + 1)}">
+        <div class="lesson_number">
+          <p th:text="${lesson.lessonNumber}"></p>
+        </div>
+        <div class="lesson_topic">
+          <a th:href="'/matpodst/' + ${lesson.lessonNumber}">
+            <p th:text="${lesson.lessonText}"></p>
+          </a>
+        </div>
+        <div class="edit">
+          <a th:href="'/matpodst/edit/' + ${lesson.lessonNumber}">
+            <p>Edit</p>
+          </a>
+        </div>
+        <div class="remove">
+          <a th:href="'/matpodst/delete/' + ${lesson.lessonId}" onclick="return confirm('Czy usunąć?')">
+            <p>Remove</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lessons_right">
+    <div th:each="lesson: ${lessons}">
+      <div class="lesson_content" th:if="${lesson.lessonNumber > (size/2)}">
+        <div class="lesson_number">
+          <p th:text="${lesson.lessonNumber}"></p>
+        </div>
+        <div class="lesson_topic">
+          <a th:href="'/matpodst/' + ${lesson.lessonNumber}">
+            <p th:text="${lesson.lessonText}"></p>
+          </a>
+        </div>
+        <div class="edit">
+          <a th:href="'/matpodst/edit/' + ${lesson.lessonNumber}">
+            <p>Edit</p>
+          </a>
+        </div>
+        <div class="remove">
+          <a th:href="'/matpodst/delete/' + ${lesson.lessonId}" onclick="return confirm('Czy na pewno chcesz usunąć ten obiekt?')">
+            <p>Remove</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div sec:authorize="hasAuthority('USER')" th:if="${enable.contains('MP')}" class="lessons">
+  <h1 class="lessons_header">Zakres lekcji z poziomu podstawowego</h1>
+  <div class="lessons_left">
+    <div th:each="lesson: ${lessons}">
+      <div class="lesson_cont" th:if="${lesson.lessonNumber < (size/2 + 1)}">
+        <div class="lesson_number">
+          <p th:text="${lesson.lessonNumber}"></p>
+        </div>
+        <div class="lesson_topic">
+          <a th:href="'/matpodst/' + ${lesson.lessonNumber}">
+            <p th:text="${lesson.lessonText}"></p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lessons_right">
+    <div th:each="lesson: ${lessons}">
+      <div class="lesson_cont" th:if="${lesson.lessonNumber > (size/2)}">
+        <div class="lesson_number">
+          <p th:text="${lesson.lessonNumber}"></p>
+        </div>
+        <div class="lesson_topic">
+          <a th:href="'/matpodst/' + ${lesson.lessonNumber}">
+            <p th:text="${lesson.lessonText}"></p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+</body>
+</html>

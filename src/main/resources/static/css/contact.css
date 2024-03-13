@@ -1,0 +1,32 @@
+.contact_form{
+    border: 2px solid black;
+    width: 800px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+.contact_form .contact_name{
+    width: 80px;
+    height: 60px;
+    background-color: #ee7752;
+}
+
+.contact_form .contact_mail{
+    width: 80px;
+    height: 60px;
+}
+
+
+.contact_form .contact_phone{
+    width: 80px;
+    height: 60px;
+}
+
+
+.contact_form .contact_text{
+    width: 80px;
+    height: 60px;
+}

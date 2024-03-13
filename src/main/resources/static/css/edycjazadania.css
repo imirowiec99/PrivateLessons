@@ -1,0 +1,50 @@
+.editExercise{
+    margin-top: 50px;
+    height: 430px;
+    width: 500px;
+    background-color: #23a6d5;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 40px;
+    padding: 15px;
+}
+.editExercise .exercise_data{
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #e73c7e;
+    padding: 15px;
+    height: 70px;
+    width: 450px;
+    justify-content: center;
+    text-align: center;
+}
+
+
+
+.editExercise .button_apply{
+    text-align: center;
+}
+
+.editExercise .button_apply input{
+    margin-top: 15px;
+    display: inline-block;
+    font-size: 25px;
+}
+
+.exercise_number {
+    width: 100px;
+}
+
+.exercise_topic {
+    width: 200px;
+}
+
+.exercise_text {
+    width: 200px;
+}
+
+.exercise_link {
+    width: 350px;
+}

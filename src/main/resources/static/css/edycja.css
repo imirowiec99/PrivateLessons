@@ -1,0 +1,137 @@
+.edit{
+    height: auto;
+    width: 1400px;
+    margin-top: 50px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: #23d5ab;
+}
+
+.edit .header{
+    font-size: 20px;
+    text-align: center;
+    padding-top: 30px;
+
+}
+
+.edit .exercise{
+    border-radius: 20px;
+    height:100px;
+    width:1300px;
+    display:flex;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 25px;
+}
+
+.edit .exercise .exercise_number{
+    height:100px;
+    width:50px;
+    background-color:red;
+    vertical-align: middle;
+    line-height: 100px;
+    text-align: center;
+}
+
+.edit .exercise .exercise_topic{
+    height:100px;
+    width:200px;
+    background-color:orange;
+    vertical-align: middle;
+    line-height: 100px;
+    text-align: center;
+}
+
+.edit .exercise .exercise_text{
+    height:100px;
+    width:500px;
+    background-color:blue;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100px;
+}
+
+
+.edit .exercise .exercise_link{
+    word-wrap: break-word;
+    height:100px;
+    width:400px;
+    background-color:yellow;
+    vertical-align: middle;
+    line-height: 100px;
+    text-align: center;
+}
+
+.edit .exercise .link{
+    height:100px;
+    width:50px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100px;
+    background-color: bisque;
+}
+.edit .exercise .link a{
+    color: black;
+    text-decoration: none;
+}
+
+.edit .exercise .remove{
+    height:100px;
+    width:100px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100px;
+    background-color: #ee7752;
+}
+
+.edit .exercise .remove a{
+    text-decoration: none;
+    color: black;
+}
+
+.edit_lesson{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 1000px;
+    height: 100px;
+    background-color: #89a0c4;
+    display: flex;
+}
+
+.edit_lesson .lesson_number{
+    width: 150px;
+}
+
+.edit_lesson .lesson_number .input_number{
+    width:10px;
+}
+
+.edit_lesson .lesson_topic{
+    width: 350px;
+}
+
+.edit_lesson .lesson_topic .input_topic{
+    width:300px;
+}
+
+.edit_lesson .lesson_text{
+    width: 250px;
+}
+
+.edit_lesson .lesson_text .input_text{
+    width:200px;
+}
+
+.edit_lesson .lesson_level{
+    width: 100px;
+}
+
+.edit_lesson .lesson_level .input_level{
+    width:50px;
+}
+
+.footer{
+    width: auto;
+    height: 50px;
+}

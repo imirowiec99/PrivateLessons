@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+  <link th:href="@{/css/lekcje.css}" rel="stylesheet" type="text/css" />
+  <link th:href="@{/css/exercises.css}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="text/javascript" async
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <title>Title</title>
+</head>
+<body>
+<div class="menu_bar">
+  <h1 class="logo"><a href="/">Matematyka na 100%</a></h1>
+  <ul>
+    <li>
+      <a href="#">Kursy Maturalne <i class="fas fa-caret-down"></i></a>
+      <div class="dropdown__menu">
+        <ul>
+          <li><a href="/indywidualne">Zajęcia Indywidualne</a></li>
+          <li><a href="#">Nagrania</a></li>
+          <li><a>Poziomy<i class="fas fa-caret-right"></i></a>
+            <div class="dropdown__menu-1">
+              <ul>
+                <li><a href="/matpodst">Matematyka podstawowa</a></li>
+                <li><a href="#">Matematyka rozszerzona</a></li>
+                <li><a href="#">Fizyka rozszerzona</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <li sec:authorize="!isAuthenticated()"><a  th:href="@{/login}">Logowanie</a></li>
+    <li sec:authorize="!isAuthenticated()"><a  th:href="@{/register}">Rejestracja</a></li>
+    <li sec:authorize="isAuthenticated()"><a th:href="@{/log_out}">Wyloguj</a></li>
+
+  </ul>
+</div>
+
+<div th:if="${enable.contains('MP')}" class="center">
+  <h1>Zadania z zakresu podstawowego</h1>
+  <div class="exercise" th:each="exercise : ${exercises}">
+      <p class="exercise_text" th:text="${exercise.exerciseText}"></p>
+    <iframe width="560" height="315" th:src="${exercise.exerciseLink}"
+            title="YouTube video player" frameborder="0" allow="accelerometer;
+             autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/css/lekcje.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/css/mail.css}" rel="stylesheet" type="text/css" />
+    <title>Logowanie</title>
+</head>
+<body>
+
+<div class="menu_bar">
+    <h1 class="logo"><a href="/">Matematyka na 100%</a></h1>
+    <ul>
+        <li>
+            <a href="#">Kursy Maturalne <i class="fas fa-caret-down"></i></a>
+            <div class="dropdown__menu">
+                <ul>
+                    <li><a href="/indywidualne">Zajęcia Indywidualne</a></li>
+                    <li><a href="#">Nagrania</a></li>
+                    <li><a>Poziomy<i class="fas fa-caret-right"></i></a>
+                        <div class="dropdown__menu-1">
+                            <ul>
+                                <li><a th:href="@{/matpodst}">Matematyka podstawowa</a></li>
+                                <li><a th:href="@{/matroz}">Matematyka rozszerzona</a></li>
+                                <li><a th:href="@{/fizroz}">Fizyka rozszerzona</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li sec:authorize="isAuthenticated()"><a th:href="@{/log_out}">Wyloguj</a></li>
+    </ul>
+</div>
+
+
+
+
+<div class="mail-container">
+    <div class="mail-form">
+        <form th:action="@{/send/{id}(id=${id})}" method="post" th:object="${mail}">
+            <h2>Wyślij maila do: <p th:text="${user.email}"></p> </h2>
+            <div class="input-box">
+                <input type="text" name="subject" placeholder="Subject" th:value="${mail.subject}" required/>
+            </div>
+            <div class="input-box">
+                <input type="text" name="message" placeholder="Message" th:value="${mail.message}" required/>
+            </div>
+            <div class="button">
+                <input type="submit" class="btn" value="Wyślij maila">
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>
+
+
+

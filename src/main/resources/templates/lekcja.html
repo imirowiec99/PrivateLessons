@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+  <link th:href="@{/css/lekcje.css}" rel="stylesheet" type="text/css" />
+  <title>Matematyka podstawowa</title>
+</head>
+<body>
+<div class="menu_bar">
+  <h1 class="logo"><a href="/">Matematyka na 100%</a></h1>
+  <ul>
+    <li><a href="/add_lesson">Dodaj lekcje</a></li>
+    <li>
+      <a href="#">Kursy Maturalne <i class="fas fa-caret-down"></i></a>
+
+      <div class="dropdown__menu">
+        <ul>
+          <li><a href="/indywidualne">Zajęcia Indywidualne</a></li>
+          <li><a href="#">Nagrania</a></li>
+          <li><a>Poziomy<i class="fas fa-caret-right"></i></a>
+            <div class="dropdown__menu-1">
+              <ul>
+                <li><a href="/matpodst">Matematyka podstawowa</a></li>
+                <li><a href="#">Matematyka rozszerzona</a></li>
+                <li><a href="#">Fizyka rozszerzona</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <li><a href="#">Logowanie</a></li>
+    <li><a href="#">Rejestracja</a></li>
+
+  </ul>
+</div>
+<p th:text="${lesson.getName()}"></p>
+
+
+</body>
+</html>
